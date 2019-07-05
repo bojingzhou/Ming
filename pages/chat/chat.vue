@@ -1,7 +1,7 @@
 <!--模板-->
 <template>
 	<view>
-		<view class="header" v-bind:class="{'status':isH5Plus}">
+		<!-- <view class="header" v-bind:class="{'status':isH5Plus}">
 			<view class="userinfo">
 				<view class="face">
 					<image :src="userinfo.face"></image>
@@ -14,20 +14,20 @@
 			<view class="setting">
 				<image src="../../static/HM-PersonalCenter/setting.png"></image>
 			</view>
-		</view>
+		</view> -->
 		<view class="orders">
-			<view class="box">
+			<view class="box" style="margin-top: 20px;">
 				<view class="label" v-for="(row,index) in orderTypeLise" :key="row.name" hover-class="hover" @tap="toOrderType(index)">
-					<view class="icon">
-						<view class="badge" v-if="row.badge>0">{{row.badge}}</view>
-						<image :src="'../../static/HM-PersonalCenter/'+row.icon"></image>
+					<view class="icon" >
+						<!-- <view class="badge" v-if="row.badge>0">{{row.badge}}</view> -->
+						<image style="width: 44upx;height: 44upx;" :src="'../../static/HM-PersonalCenter/'+row.icon"></image>
 					</view>
 					{{row.name}}
 				</view>
 			</view>
 		</view>
 		
-		<div id="bbb">
+		<div id="bbb" style="margin-top: 80px;">
 			<div id="vm" class="pubu" v-cloak>
 				<ul id="show" class="yg yg_l">
 					<li v-for="(item,index) in ListData" :key="index" v-if="index%2==0">

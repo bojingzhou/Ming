@@ -5,13 +5,13 @@
 		</view>
 		<view class="center_box_bg">
 			<view class="profily">
-				<view class="base">
+				<!-- <view class="base">
 					<view class="profily_header">
 
 					</view>
 					<text>昵称</text>
 					<image src="../../static/fumou-center-template/setting.png" mode=""></image>
-				</view>
+				</view> -->
 				<view class="order_status">
 					<view class="status" v-for="item in status">
 						<image class="icon" :src="item.url" mode="aspectFill"></image>
@@ -19,7 +19,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="baiban"></view>
+			<view class="baiban" style="height: 62px;"></view>
 			<view>
 				<view class="banner" @click="goDetail(banner)">
 					<image class="banner-img" :src="banner.cover"></image>
