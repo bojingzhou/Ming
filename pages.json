@@ -1,5 +1,11 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		// {
+		// 	"path": "pages/login/login",
+		// 	"style": {
+		// 		"navigationBarTitleText": "登陆"
+		// 	}
+		// },
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -24,7 +30,7 @@
 		}, {
 			"path": "pages/chat/chat",
 			"style": {
-				"navigationBarTitleText": "交流"
+				"navigationBarTitleText": "许愿墙"
 			}
 		}, {
 			"path": "pages/chat-edit/chat-edit",
@@ -63,10 +69,10 @@
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
-		"color": "#7A7E83",
-		"selectedColor": "#007AFF",
-		"borderStyle": "black",
-		"backgroundColor": "#F8F8F8",
+		// "color": "#ff9b8a",
+		"selectedColor": "#ffb172",
+		// "borderStyle": "#ccc",
+		"backgroundColor": "#fff",
 		"list": [{
 				"pagePath": "pages/index/index",
 				// "iconPath": "static/component.png",

@@ -1,14 +1,14 @@
 <template>
-    <view class="page">
+	<view class="page content">
+		<view class='feedback-title'>
+			<text>输入您的言论内容</text>
+			<text class="feedback-quick" @tap="chooseMsg">快速键入</text>
+		</view>
+		<view class="feedback-body">
+			<textarea placeholder="请详细描述您的言论内容..." v-model="sendDate.content" class="feedback-textare" />
+			</view>
         <view class='feedback-title'>
-            <text>问题和意见</text>
-            <text class="feedback-quick" @tap="chooseMsg">快速键入</text>
-        </view>
-        <view class="feedback-body">
-            <textarea placeholder="请详细描述你的问题和意见..." v-model="sendDate.content" class="feedback-textare" />
-            </view>
-        <view class='feedback-title'>
-            <text>图片(选填,提供问题截图,总大小10M以下)</text>
+            <text>图片</text>
         </view>
         <view class="feedback-body feedback-uploader">
             <view class="uni-uploader">
@@ -20,7 +20,7 @@
                     <view class="uni-uploader__files">
                         <block v-for="(image,index) in imageList" :key="index">
                             <view class="uni-uploader__file" style="position: relative;">
-                                <image class="uni-uploader__img" :src="image" @tap="previewImage"></image>
+                                <image class="uni-uploader__img" :src="image" @tap="previewImage(index)"></image>
                                 <view class="close-view" @click="close(index)">x</view>
                             </view>
                         </block>
@@ -31,22 +31,7 @@
                 </view>
             </view>
         </view>
-        <view class='feedback-title'>
-            <text>QQ/邮箱</text>
-        </view>
-        <view class="feedback-body">
-            <input class="feedback-input" v-model="sendDate.contact" placeholder="(选填,方便我们联系你 )" />
-        </view>
-        <view class='feedback-title feedback-star-view'>
-            <text>应用评分</text>
-            <view class="feedback-star-view">
-                <text class="feedback-star" v-for="(value,key) in stars" :key="key" :class="key < sendDate.score ? 'active' : ''" @tap="chooseStar(value)"></text>
-            </view>
-        </view>
         <button type="primary" class="feedback-submit" @tap="send">提交</button>
-        <view class='feedback-title'>
-            <text>用户反馈的结果可在app打包后于DCloud开发者中心查看</text>
-        </view>
     </view>
 </template>
 
@@ -58,9 +43,7 @@
                 stars: [1, 2, 3, 4, 5],
                 imageList: [],
                 sendDate: {
-                    score: 0,
                     content: "",
-                    contact: ""
                 }
             }
         },
@@ -76,8 +59,10 @@
             //     net: "" + plus.networkinfo.getCurrentType()
             // }
             // this.sendDate = Object.assign(deviceInfo, this.sendDate);
+			
         },
         methods: {
+			
             close(e){
                 this.imageList.splice(e,1);
             },
@@ -92,7 +77,7 @@
             chooseImg() { //选择图片
                 uni.chooseImage({
                     sourceType: ["camera", "album"],
-                    sizeType: "compressed",
+                    sizeType: ["compressed","original"],
                     count: 8 - this.imageList.length,
                     success: (res) => {
                         this.imageList = this.imageList.concat(res.tempFilePaths);
@@ -102,19 +87,20 @@
             chooseStar(e) { //点击评星
                 this.sendDate.score = e;
             },
-            previewImage() { //预览图片
+            previewImage(index) { //预览图片
                 uni.previewImage({
-                    urls: this.imageList
+					current:index,
+                    urls: this.imageList,
                 });
             },
             send() { //发送反馈
-                console.log(JSON.stringify(this.sendDate));
                 let imgs = this.imageList.map((value, index) => {
                     return {
                         name: "image" + index,
                         uri: value
                     }
                 })
+				// todo 图片上传
                 uni.uploadFile({
                     url: "https://service.dcloud.net.cn/feedback",
                     files: imgs,
@@ -126,9 +112,7 @@
                             });
                             this.imageList = [];
                             this.sendDate = {
-                                score: 0,
                                 content: "",
-                                contact: ""
                             }
                         }
                     },
@@ -146,6 +130,7 @@
 </script>
 
 <style>
+	
     @font-face {
     	font-family: uniicons;
     	font-weight: normal;

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="header">
-			<view class="bg">
+			<view class="bg com">
 				<view class="box" style="height: 120px;border-radius: 6px;">
 					<view class="box-hd">
 						<view class="avator" style="width: 60px;height: 60px;">
@@ -10,18 +10,18 @@
 						<view class="phone-number" style="margin: 10px 0 0 0;">18909XXXX67</view>
 					</view>
 					<view class="box-bd">
-						<view class="item">
+						<!-- <view class="item">
 							<view class="icon" style="width: 24px;height: 24px;"><img src="../../static/user/message.png"></view>
-							<view class="text">我的通知</view>
-						</view>
+							<view class="text">我的积分</view>
+						</view> -->
 						<view class="item">
 							<view class="icon" style="width: 24px;height: 24px;"><img src="../../static/user/favorite.png"></view>
-							<view class="text">我的收藏</view>
+							<view class="text">我的点赞</view>
 						</view>
-						<view class="item">
+						<!-- <view class="item">
 							<view class="icon" style="width: 24px;height: 24px;"><img src="../../static/user/service.png"></view>
 							<view class="text">我的客服</view>
-						</view>
+						</view> -->
 					</view>
 				</view>
 			</view>
@@ -32,44 +32,7 @@
 					<view class="icon">
 						<img src="../../static/user/card.png">
 					</view>
-					<view class="text">我的名片</view>
-					<img class="to" src="../../static/user/to.png">
-				</view>
-			</view>
-			<view class="list">
-				<view class="li " @click="changeSkin">
-					<view class="icon">
-						<img src="../../static/user/skin.png">
-					</view>
-					<view class="text">主题切换</view>
-					<img class="to" src="../../static/user/to.png">
-				</view>
-				<view class="li ">
-					<view class="icon">
-						<img src="../../static/user/help.png">
-					</view>
-					<view class="text">帮助中心</view>
-					<img class="to" src="../../static/user/to.png">
-				</view>
-				<view class="li ">
-					<view class="icon">
-						<img src="../../static/user/about.png"> </view>
-					<view class="text">关于我们</view>
-					<img class="to" src="../../static/user/to.png">
-				</view>
-				<view class="li ">
-					<view class="icon">
-						<img src="../../static/user/opinion.png"> </view>
-					<view class="text">意见反馈</view>
-					<img class="to" src="../../static/user/to.png">
-				</view>
-			</view>
-			<view class="list">
-				<view class="li noborder">
-					<view class="icon">
-						<img src="../../static/user/set.png">
-					</view>
-					<view class="text">系统设置</view>
+					<view class="text">我的许愿</view>
 					<img class="to" src="../../static/user/to.png">
 				</view>
 			</view>
@@ -91,7 +54,9 @@
 		}
 	}
 </script>
-
+<style>
+	@import url("../../static/common.css");
+</style>
 <style lang="scss">
 	page {
 		background-color: #f1f1f1;
@@ -108,6 +73,8 @@
 			height: 200upx;
 			padding-top: 100upx;
 			background-color: #4191ea;
+		/* background: linear-gradient(#FF978D, #FFBB69); */
+
 		}
 	}
 
